@@ -1,0 +1,64 @@
+{
+    "name": "Blog API",
+    "description": "A posts API with generated CRUD routes, DTO validation, API docs, and repository-backed persistence.",
+    "version": "1.0.0",
+    "projectType": "project",
+    "root": "",
+    "sourceRoot": "src",
+    "scripts": {
+        "test": "vendor/bin/pest tests"
+    },
+    "development": {
+        "server": {
+            "runtime": "php",
+            "host": "localhost",
+            "port": 8080,
+            "openBrowser": false,
+            "openswoole": {
+                "workerNum": 1,
+                "taskWorkerNum": 0,
+                "maxRequest": 0,
+                "enableCoroutine": true,
+                "hookFlags": "all"
+            }
+        }
+    },
+    "cli": {
+        "schematics": {
+            "paths": [
+                "schematics"
+            ],
+            "discoverPackages": true,
+            "allowOverrides": false
+        }
+    },
+    "apiDocs": {
+        "enabled": true,
+        "exportOnServe": false,
+        "exportPath": "generated/openapi.json"
+    },
+    "events": {
+        "wildcards": true,
+        "delimiter": ".",
+        "maxListeners": null,
+        "outbox": {
+            "queue": "rabbitmq.events",
+            "batchSize": 100,
+            "retryDelaySeconds": 60
+        }
+    },
+    "webComponents": {
+        "enabled": true,
+        "prefix": "app",
+        "bundleUrl": null,
+        "bundlePath": null,
+        "output": "public/js/assegai-components.min.js",
+        "buildOnDumpAutoload": false,
+        "hotReload": {
+            "enabled": true,
+            "path": "public/.assegai/wc-hot-reload.json",
+            "pollInterval": 1000,
+            "ttl": 43200
+        }
+    }
+}

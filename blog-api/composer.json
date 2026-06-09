@@ -1,0 +1,24 @@
+{
+    "name": "assegaiphp/blog-api",
+    "description": "A posts API with generated CRUD routes, DTO validation, API docs, and repository-backed persistence.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Assegaiphp\\BlogApi\\": "src/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:5000 bootstrap.php",
+        "test": "vendor/bin/pest"
+    },
+    "license": "MIT",
+    "authors": [],
+    "require": {
+        "assegaiphp/core": "^0.9.0",
+        "assegaiphp/orm": "^0.9.0",
+        "ext-curl": "*",
+        "ext-pdo": "*",
+        "php": "^8.4",
+        "vlucas/phpdotenv": "^5.4"
+    }
+}

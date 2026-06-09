@@ -61,6 +61,23 @@ Each example must include its own `README.md` with:
 - For persistence examples, prefer SQLite unless the point of the example is a specific database driver.
 - For ORM examples, include entities, repositories or injected providers, migrations or setup steps, and seed data where useful.
 
+## Correctness guardrails
+
+- Prioritize correctness, completeness, and accuracy over speed.
+- Treat each change as part of a larger framework contract until the surrounding code proves it is isolated.
+- Before editing, inspect the affected example, related modules, framework conventions, templates, generated output, docs, and runtime commands that depend on the change.
+- Do not fix only the first visible symptom. Update every affected file and workflow, including setup docs, generated templates, migrations, tests, and public-facing behavior.
+- When behavior depends on framework internals, inspect the framework or package source instead of relying on memory.
+- Verify the result through the same path a learner will use, not only through a narrow unit or file-level check.
+
+## Migrations and schema changes
+
+- Derive migration SQL from the complete entity model, including properties, inherited traits, relation attributes, ORM column attributes, defaults, nullability, indexes, and seed data.
+- Update both `up.sql` and `down.sql` for every affected migration.
+- Check every related table when a trait, relation, or shared entity convention changes.
+- For SQLite examples, validate the SQL against an actual SQLite database and inspect the resulting schema with `PRAGMA table_info(...)`.
+- When migrations seed data used by an endpoint or README walkthrough, verify the endpoint or command that depends on that data.
+
 ## Dependency rules
 
 - Examples should work from a clean clone using released `assegaiphp/*` packages.
